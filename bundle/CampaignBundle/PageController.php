@@ -72,21 +72,19 @@ class PageController extends Controller {
 		}
 		$request = $this->request;
 		$fields = array(
-			'q1' => array('notnull', '120'),
-			'q2' => array('notnull', '121'),
-			'q3' => array('notnull', '122'),
-			'name' => array('notnull', '124'),
-			'tel' => array('notnull', '125'),
-			'code' => array('notnull', '126'),
+			'store' => array('notnull', '120'),
+			'name' => array('notnull', '121'),
+			'tel' => array('notnull', '122'),
+			'code' => array('notnull', '123'),
+			'weibo' => array('notnull', '124'),
 		);
 		
 		$request->validation($fields);
-		$q1 = $request->request->get('q1');
-		$q2 = $request->request->get('q2');
-		$q3 = $request->request->get('q3');
+		$store = $request->request->get('store');
 		$name = $request->request->get('name');
 		$tel = $request->request->get('tel');
 		$code = $request->request->get('code');
+		$weibo = $request->request->get('weibo');
 		if ($code != $_SESSION['check_code']) {
 			$data = array('status' => 2, 'msg' => '验证码不正确');
 			$this->dataPrint($data);
@@ -94,6 +92,9 @@ class PageController extends Controller {
 		
 		unset($_SESSION['check_timestamp']);
 		unset($_SESSION['check_code']);
+		$data = array('status' => 1, 'msg' => '提交成功');
+		$this->dataPrint($data);
+		exit;
 		$answer = array();
 		$answer[] = array('question'=>'您是否愿意见证一个全新汽车品牌的诞生？', 'answer'=>$q1);
 		$answer[] = array('question'=>'您是否计划购买一辆新车？', 'answer'=>$q2);

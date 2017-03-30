@@ -23,19 +23,12 @@ class PageController extends Controller {
 	}
 
 	public function testAction() {	
-		$q1 = '后续关注';
-		$q2 = '暂时没有';
-		$q3 = '以后再说';
+		$store = '上海－主会场';
 		$name = 'demon';
 		$tel = '15121038676';
-		$answer = array();
-		$answer[] = array('question'=>'您是否愿意见证一个全新汽车品牌的诞生？', 'answer'=>$q1);
-		$answer[] = array('question'=>'您是否计划购买一辆新车？', 'answer'=>$q2);
-		$answer[] = array('question'=>'您是否愿意到LYNK & CO的活动现场先睹为快？', 'answer'=>$q3);
-		//$extDescription = json_encode($answer);
-		$extDescription = $answer;
+		$srcExtDesc = array('address' => $store);
 		//$srcExtDesc = array("media"=>"自建媒体","behavior"=>"市场活动","terminal"=>"H5");
-		$rs = $this->sendData($name, $tel, $extDescription);
+		$rs = $this->sendData($name, $tel, $srcExtDesc);
 		var_dump($rs);
 		exit;
 	}
@@ -76,7 +69,7 @@ class PageController extends Controller {
 			'name' => array('notnull', '121'),
 			'tel' => array('notnull', '122'),
 			'code' => array('notnull', '123'),
-			'weibo' => array('notnull', '124'),
+			//'weibo' => array('notnull', '124'),
 		);
 		
 		$request->validation($fields);
@@ -84,7 +77,7 @@ class PageController extends Controller {
 		$name = $request->request->get('name');
 		$tel = $request->request->get('tel');
 		$code = $request->request->get('code');
-		$weibo = $request->request->get('weibo');
+		//$weibo = $request->request->get('weibo');
 		if ($code != $_SESSION['check_code']) {
 			$data = array('status' => 2, 'msg' => '验证码不正确');
 			$this->dataPrint($data);
@@ -92,17 +85,10 @@ class PageController extends Controller {
 		
 		unset($_SESSION['check_timestamp']);
 		unset($_SESSION['check_code']);
-		$data = array('status' => 1, 'msg' => '提交成功');
-		$this->dataPrint($data);
-		exit;
-		$answer = array();
-		$answer[] = array('question'=>'您是否愿意见证一个全新汽车品牌的诞生？', 'answer'=>$q1);
-		$answer[] = array('question'=>'您是否计划购买一辆新车？', 'answer'=>$q2);
-		$answer[] = array('question'=>'您是否愿意到LYNK & CO的活动现场先睹为快？', 'answer'=>$q3);
-		//$extDescription = json_encode($answer);
-		$extDescription = $answer;
+		$srcExtDesc = array('address' => $store);
+		
 		//$srcExtDesc = array("media"=>"自建媒体","behavior"=>"市场活动","terminal"=>"H5",'extId'=>'20170405133200');
-		$rs = $this->sendData($name, $tel, $extDescription);
+		$rs = $this->sendData($name, $tel, $srcExtDesc);
 		$rs = json_decode($rs);
 		if ($rs->code == 200) {
 			$data = array('status' => 1, 'msg' => '提交成功');
@@ -115,11 +101,11 @@ class PageController extends Controller {
 
 	}
 
-	private function sendData($name, $tel, $extDescription) {
+	private function sendData($name, $tel, $srcExtDesc) {
 		$url = WS_URL;
-		$lead = array('name'=>$name,'cellPhone1'=>$tel,'extDescription'=>$extDescription);
+		$lead = array('name'=>$name,'cellPhone1'=>$tel,'srcExtDesc'=>$srcExtDesc);
 		$lead1 = json_encode($lead);
-		$leadSource = array("media"=>"self_media","behavior"=>"market_activity","terminal"=>"h5",'extId'=>'20170405133200');
+		$leadSource = array("media"=>"self_media","behavior"=>"market_activity","terminal"=>"h5",'extId'=>'20170405133201');
 		$leadSource1 = json_encode($leadSource);
 		$ak = CSB_AK;
 		$sk = CSB_SK;

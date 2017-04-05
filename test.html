@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>LYNK & CO互联共创之夜</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="landscape">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="landscape">
+
+    <link rel="apple-touch-startup-image" href="/build/assets/img/bg1.png" />
+
+    <!--禁用手机号码链接(for iPhone)-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui" />
+    <!--自适应设备宽度-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--控制全屏时顶部状态栏的外，默认白色-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="Keywords" content="">
+    <meta name="Description" content="...">
+    <script type="text/javascript" src="tweenMax.js"></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background: #000;
+        }
+
+        .dreambox{
+            position: relative;
+            height: 100%;
+        }
+
+        /*body{
+            background: #000;
+        }*/
+
+        .btn{
+            width: 180px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+
+            position: absolute;
+            left: 50%;
+            bottom: 19%;
+            margin: 0 0 0 -90px;
+            z-index: 3;
+        }
+    
+        /*rect {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          -webkit-animation: dash 5s linear infinite;
+          animation: dash 5s linear infinite;
+        }
+
+        @-webkit-keyframes dash {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+        @keyframes dash {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }*/
+
+        /*.btn:before{
+            width: 67%;
+            height: 1px;
+            content: "";
+            overflow: hidden;
+            background: #f60;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 2;
+        }
+
+        .btn:after{
+            width: 30%;
+            height: 1px;
+            content: "";
+            overflow: hidden;
+            background: #f60;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        .btn span{
+            width: 1px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #f60;
+            z-index: 2;
+        }
+*/
+        .btn a{
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+            color: #ff495c;
+            opacity: 0;
+        }
+
+        .btn svg{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+
+
+        .btn svg rect, .btn a {
+            stroke-width: 30;
+            -webkit-transition: all 2s;
+            transition: all 2s;
+        }
+
+        .btn svg rect, .btn a {
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+        }
+
+        .btn svg rect.top{
+            -webkit-transform: translateX(600px);
+            transform: translateX(600px);
+        }
+
+        .btn svg rect.right{
+            -webkit-transform: translateY(600px);
+            transform: translateY(600px);
+        }
+
+        .btn svg rect.bottom{
+            -webkit-transform: translateX(-700px);
+            transform: translateX(-700px);
+        }
+
+
+        .btn.hover svg rect.top{
+            -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+        }
+
+        .btn.hover svg rect.right{
+            -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+        }
+
+        .btn.hover svg rect.bottom{
+            -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+        }
+
+        .btn.hover a{
+            opacity: 1;
+        }
+
+
+        .citylist{
+            width: 100%;
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        .citylist a{
+            width: 25%;
+            height: 100%;
+            background: #000;
+            position: relative;
+            float: left;
+            display: inline-block;
+        }
+
+        .citylist a span{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        
+        .citylist a em{
+            display: inline-block;
+            font-style: normal;
+
+            color: #ff495c;
+        }
+
+        .citylist a img{
+            vertical-align: bottom;
+        }
+
+        .section{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+        }
+
+        .kv{
+            position: relative;
+        }
+
+        .kvText{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+        }
+    </style>
+<script type="text/javascript" src="/build/assets/js/main.min.js"></script>
+</head>
+<body>
+    <div class="dreambox">
+        <div class="section">
+            <div class="kv">
+                <img src="/build/assets/img/t1.png" class="kvText" id="a1" width="100%">
+                <img src="/build/assets/img/t2.png" class="kvText" id="a2" width="100%">
+                <img src="/build/assets/img/t3.png" class="kvText" id="a3" width="100%">
+                <div class="btn" id="a4">
+                    <a href="http://www.baidu.com">报名上海主会场</a>
+                    <svg width="612" height="144" viewBox="0 0 612 144" enable-background="new 0 0 612 144">
+                        <rect class="bottom" x="503.7" y="139.6" fill="#FF495C" width="108.3" height="3.7"/>
+                        <rect class="right" x="608.3" y="-1" fill="#FF495C" width="3.7" height="144.2"/>
+                        <rect class="top" x="158" y="-1" fill="#FF495C" width="454" height="3.7"/>
+                    </svg>
+                </div>
+                <img src="/build/assets/img/t4.png" class="kvText" id="a5" width="100%">
+                <img src="/build/assets/img/0.jpg" width="100%" id="a6">
+            </div> 
+        </div>
+
+        <div class="citylist">
+            <a href="beijing.html" title="北京">
+                <span><em>北京</em></span>
+                <img src="/build/assets/img/1.jpg" width="100%">
+            </a>
+             <a href="hangzhou.html" title="杭州">
+                <span><em>杭州</em></span>
+                <img src="/build/assets/img/2.jpg" width="100%">
+             </a>
+              <a href="guangzhou.html" title="广州">
+                <span><em>广州</em></span>
+                <img src="/build/assets/img/3.jpg" width="100%">
+              </a>
+               <a href="chengdu.html" title="成都">
+                 <span><em>成都</em></span>
+                 <img src="/build/assets/img/4.jpg" width="100%">
+               </a>
+        </div>
+
+        <img src="/build/assets/img/index.jpg" width="100%">
+    </div>
+
+    
+    
+    
+
+
+
+<script type="text/javascript">
+    var a1 = document.getElementById("a1"),
+    a2 = document.getElementById("a2"),
+    a3 =  document.getElementById("a3"),
+    a4 = document.getElementById("a4"),
+    a5 =  document.getElementById("a5"),
+    a6 = document.getElementById("a6");
+
+
+    //tweens are inserted at and relative to a label's position
+    var tl = new TimelineLite();
+
+    tl
+    .fromTo(a6, .8, {scale:1.2, opacity: 0, y: 136}, {scale:1, opacity: 1, y: 0})
+    .fromTo(a1, 1, {y:30, opacity: 0}, {y:0, opacity: 1}, "-=0.5")
+    .fromTo(a2, 1, {y:20, opacity: 0}, {y:0, opacity: 1}, "-=0.5")
+    .fromTo(a3, 1, {y:10, opacity: 0}, {y:0, opacity: 1}, "-=0.6")
+    .fromTo(a4, 1, {y:5, opacity: 0}, {y:0, opacity: 1}, "-=0.7")
+    .fromTo(a5, 1, {y:2, opacity: 0}, {y:0, opacity: 1}, "-=0.8")
+    .staggerFromTo(".citylist a", 1, {
+      cycle:{
+        //an array of values
+        backgroundColor:["red", "white", "#00f"],
+        //function that returns a value
+        y: function(){
+          return 15;
+        },
+        x: function(){
+          return 15;
+        },
+        opacity: function(){
+          return 0;
+        },
+        scale: function(){
+            return 1.2
+        }
+      }
+    },
+      
+     {
+      cycle:{
+        //an array of values
+        backgroundColor:["green", "orange", "pink"],
+        //function that returns a value
+        y:function(){
+          return 0;
+        },
+        x: function(){
+          return 0;
+        },
+        opacity: function(){
+          return 1;
+        },
+        scale: function(){
+            return 1
+        }
+      }
+      
+    }, 0.5, "-=0.5", function(){
+        $(".btn").addClass("hover");
+    });
+
+
+
+    // TweenMax.staggerFrom(".citylist a", 1, {
+    //   cycle:{
+    //     //an array of values
+    //     backgroundColor:["#000", "#000", "#000"],
+    //     //function that returns a value
+    //     x:function(index){
+    //       return index * -1;
+    //     },
+    //     y:function(index){
+    //       return index * 6;
+    //     }
+    //   }
+    // }, 0.5);
+
+</script>
+
+</body>
+</html>
